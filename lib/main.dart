@@ -29,28 +29,25 @@ class BasicLayoutScreen extends StatelessWidget {
 
   // In BasicLayoutScreen's build method
   @override
-  // In BasicLayoutScreen's build method
-  @override
   Widget build(BuildContext context) {
-    // A Row works exactly like a Column, but horizontally.
-    return Row(
-      // MainAxisAlignment now controls horizontal alignment.
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-
-      // CrossAxisAlignment now controls vertical alignment.
-      crossAxisAlignment: CrossAxisAlignment.center,
-
+    return Column(
       children: [
-        _buildBox('Box 1', Colors.teal),
-        _buildBox('Box 2', Colors.orange),
-        _buildBox('Box 3', Colors.greenAccent),
-        // With a Row, you can easily get an "overflow" error if the
-        // children are too wide for the screen. We'll fix this next.
+        // This Row takes up only the height it needs.
+        Row(
+          children: [
+            _buildBox('Fixed Width', Colors.red),
+            // This Expanded widget will take up ALL remaining horizontal space.
+            Expanded(child: _buildBox('Expanded', Colors.green)),
+          ],
+        ),
+
+        // This Expanded widget will take up ALL remaining VERTICAL space in the Column.
+        Expanded(child: _buildBox('Expanded to fill height', Colors.blue)),
+
+        _buildBox('Bottom Box', Colors.purple),
       ],
     );
   }
-
-  // ... keep the _buildBox helper method ...
 
   // Helper method to avoid repetitive code.
   // The leading underscore makes this method private to this file.
