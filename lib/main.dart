@@ -32,6 +32,13 @@ class BasicLayoutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // A Column takes a list of widgets as its children.
     return Column(
+      // MainAxisAlignment controls alignment along the main (vertical) axis.
+      // Try changing this to .start, .end, .center, .spaceAround, .spaceBetween
+      mainAxisAlignment: MainAxisAlignment.center,
+
+      // CrossAxisAlignment controls alignment along the cross (horizontal) axis.
+      // Try changing this to .start, .end, .center, .stretch
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         // Let's create a reusable "box" widget for demonstration
         _buildBox('Box 1', Colors.teal),
