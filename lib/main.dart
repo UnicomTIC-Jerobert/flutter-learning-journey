@@ -27,20 +27,31 @@ class MyApp extends StatelessWidget {
 class BasicLayoutScreen extends StatelessWidget {
   const BasicLayoutScreen({super.key});
 
+  // In BasicLayoutScreen's build method
   @override
   Widget build(BuildContext context) {
-    // For now, it's just an empty container.
-    return Container(
-      // Styling properties
-      color: Colors.blueGrey[100], // A light grey-blue background color
-      margin: const EdgeInsets.all(20.0), // Outer space (like CSS margin)
-      padding: const EdgeInsets.all(10.0), // Inner space (like CSS padding)
-      // Sizing properties
-      width: 200.0,
-      height: 100.0,
+    // A Column takes a list of widgets as its children.
+    return Column(
+      children: [
+        // Let's create a reusable "box" widget for demonstration
+        _buildBox('Box 1', Colors.teal),
+        _buildBox('Box 2', Colors.orange),
+        _buildBox('Box 3', Colors.indigo),
+      ],
+    );
+  }
 
-      // The widget to place inside the container
-      child: Container(color: Colors.red, child: const Text('Hello')),
+  // Helper method to avoid repetitive code.
+  // The leading underscore makes this method private to this file.
+  Widget _buildBox(String text, Color color) {
+    return Container(
+      margin: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(20.0),
+      color: color,
+      child: Text(
+        text,
+        style: const TextStyle(color: Colors.white, fontSize: 20),
+      ),
     );
   }
 }
